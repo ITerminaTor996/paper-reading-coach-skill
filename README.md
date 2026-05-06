@@ -20,7 +20,9 @@ reading rhythm:
 
 - ask quick questions when you need help;
 - read one bounded section at a time;
+- carry guiding questions into the section while reading;
 - get quizzed before receiving a full explanation;
+- ask mid-reading questions without losing your place;
 - repair misunderstandings while the paper is still fresh;
 - keep track of weak points for later review.
 
@@ -65,6 +67,7 @@ implementation-readiness notes, literature-review positioning, or memory cards.
 - 💬 Dual workflow: evidence-grounded Q&A plus active-recall coaching.
 - 🎚️ Dynamic question volume based on section density and difficulty.
 - 🚦 Anti-spoiler gates that stop the assistant from explaining too early.
+- 🧭 Checkpoint state tracking so mid-reading Q&A does not advance the paper.
 - 🧱 Fallback chunking for messy PDF text or broken section headings.
 - 📊 Figure, table, equation, theorem, algorithm, and experiment checkpoints.
 - 🪜 Scaffolded hints before full explanations.
@@ -78,6 +81,8 @@ implementation-readiness notes, literature-review positioning, or memory cards.
 | `/ask` | Switch to direct paper Q&A. |
 | `/coach` | Switch to test-first reading coach mode. |
 | `/switch` | Toggle between Q&A and coach mode. |
+| `/done` | Mark the current unit as read and ready for checkpoint answers. |
+| `/hold` | Stay on the current unit and do not advance. |
 | `/hint` | Get the smallest useful hint. |
 | `/summary` | Summarize the current unit. |
 | `/critique` | Inspect the paper like a skeptical reviewer. |

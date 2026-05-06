@@ -2,7 +2,7 @@ interface:
   display_name: "Paper Reading Coach"
   short_description: "Read papers with Q&A, gated quizzes, and critique"
   brand_color: "#2563EB"
-  default_prompt: "Use $paper-reading-coach to help me read a research paper. Use /ask for evidence-grounded Q&A when I ask direct questions, and /coach for gated section-by-section reading with quizzes, hints, critique, and synthesis."
+  default_prompt: "Use $paper-reading-coach to help me read a research paper. Use /ask for evidence-grounded Q&A when I ask direct questions, and /coach for gated section-by-section reading with guiding questions, mid-reading help, quizzes, hints, critique, and synthesis. Do not advance to the next unit until I say /done and complete the checkpoint."
 
 policy:
   allow_implicit_invocation: true
