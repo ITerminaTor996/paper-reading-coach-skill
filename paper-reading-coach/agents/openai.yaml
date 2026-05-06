@@ -1,0 +1,8 @@
+interface:
+  display_name: "Paper Reading Coach"
+  short_description: "Quiz and repair paper understanding section by section"
+  brand_color: "#2563EB"
+  default_prompt: "Use $paper-reading-coach to guide me through a research paper section by section and quiz my understanding before explaining."
+
+policy:
+  allow_implicit_invocation: true
