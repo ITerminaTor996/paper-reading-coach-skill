@@ -1,8 +1,8 @@
 interface:
   display_name: "Paper Reading Coach"
-  short_description: "Read papers with gated quizzes, hints, and critique"
+  short_description: "Read papers with Q&A, gated quizzes, and critique"
   brand_color: "#2563EB"
-  default_prompt: "Use $paper-reading-coach to guide me through a research paper section by section. Gate each section, quiz my understanding before explaining, scaffold hints when I get stuck, and help critique figures, methods, and evidence."
+  default_prompt: "Use $paper-reading-coach to help me read a research paper. Use /ask for evidence-grounded Q&A when I ask direct questions, and /coach for gated section-by-section reading with quizzes, hints, critique, and synthesis."
 
 policy:
   allow_implicit_invocation: true
