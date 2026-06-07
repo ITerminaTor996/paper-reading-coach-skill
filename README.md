@@ -1,101 +1,75 @@
-# 📚 Paper Reading Coach
+# Paper Reading Coach
 
-Most AI paper tools answer your questions. This one can also question your
-answers.
+An adaptive AI-agent skill for reading academic papers, technical reports, and
+research notes.
 
-Paper Reading Coach is a portable AI-agent skill for reading academic papers
-with two complementary workflows: direct Q&A when you need a fast explanation,
-and test-first coaching when you want to make sure you actually understand the
-paper.
+The skill is designed for a natural reading rhythm: ask questions when you are
+confused, get a lightweight map before reading, switch between skimming and
+deep reading, receive occasional understanding checks, and finish with an exam
+or synthesis when useful.
 
-It is written as a skill folder, but the core instructions can be used with many
-AI systems: Codex, Claude Code, other agent frameworks, or a web-based AI chat
-where you paste the prompt manually.
+It is written as a portable skill folder, but the core instructions can also be
+pasted into many AI systems: Codex, Claude Code, other agent frameworks, or a
+web-based AI chat.
 
-## 🧠 Why This Exists
+## Why This Exists
 
-LLMs are good at summarizing papers, but summaries can make difficult ideas feel
-familiar before they are understood. This skill is designed for a different
-reading rhythm:
+Many paper tools summarize too early. Older coaching prompts can go too far in
+the other direction: they turn reading into rigid section checkpoints and
+quizzes.
 
-- ask quick questions when you need help;
-- read one bounded section at a time;
-- carry guiding questions into the section while reading;
-- get quizzed before receiving a full explanation;
-- ask mid-reading questions without losing your place;
-- repair misunderstandings while the paper is still fresh;
-- keep track of weak points for later review.
+This skill aims for the middle:
 
-The goal is not to replace paper-reading tools. It is to add a more active,
-mentor-like layer on top of them.
+- explain direct questions first;
+- use paper sections as navigation anchors, not mandatory gates;
+- begin with a lightweight reading map and main questions;
+- infer whether the user is skimming or deep-reading;
+- ask natural follow-up questions only when they help;
+- provide specific, non-flattering encouragement;
+- support final exam-style review;
+- produce a final synthesis that includes both paper content and the user's
+  learning path.
 
-## 🧭 Modes
+## Reading Flow
 
-### 💬 `/ask`
+At the start of a paper, the assistant can provide:
 
-Use direct Q&A mode for quick paper questions, equation explanations, figure
-interpretation, section summaries, comparisons, and terminology.
+- a one-sentence orientation;
+- three main questions the reader should answer by the end;
+- an adjustable reading route;
+- a quick distinction between skim and deep-read goals.
 
-Answers are encouraged to separate:
+During reading, the user can ask freely about concepts, equations, figures,
+methods, experiments, or whether a detail can be skipped. The assistant should
+answer the current question first and only ask a natural follow-up when it
+helps clarify understanding.
 
-- what the paper explicitly says;
-- what is inferred from the paper;
-- what background knowledge is being added;
-- where the supporting evidence appears, when available.
+At the end, the user can request:
 
-### 🎓 `/coach`
+- an exam with graded repair;
+- a paper summary;
+- a synthesis that includes what the user understood, what they struggled
+  with, and what to revisit;
+- memory cards or notes for a literature review, presentation, or
+  implementation plan.
 
-Use coaching mode for section-by-section reading. The assistant gives a bounded
-reading target, waits, asks questions, grades your answers, gives hints, and
-repairs misunderstandings.
+## Optional Commands
 
-This mode is intended for deep method understanding, group meetings,
-implementation, replication, exams, and serious literature review.
-
-### 🔍 `/critique`
-
-Use reviewer mode to examine assumptions, missing baselines, weak evidence,
-hidden variables, overclaiming, and limitations.
-
-### 🧩 `/synthesis`
-
-Use synthesis mode after reading enough material to build a paper map,
-implementation-readiness notes, literature-review positioning, or memory cards.
-
-## ✨ Features
-
-- 💬 Dual workflow: evidence-grounded Q&A plus active-recall coaching.
-- 🎚️ Dynamic question volume based on section density and difficulty.
-- 🚦 Anti-spoiler gates that stop the assistant from explaining too early.
-- 🧭 Checkpoint state tracking so mid-reading Q&A does not advance the paper.
-- 🧱 Fallback chunking for messy PDF text or broken section headings.
-- 📊 Figure, table, equation, theorem, algorithm, and experiment checkpoints.
-- 🪜 Scaffolded hints before full explanations.
-- 🧾 Compact running state for weak points and evidence to revisit.
-- 💾 Pause/resume support through `/save`.
-
-## ⚡ Commands
+Commands are optional. Natural language works too.
 
 | Command | Purpose |
 | --- | --- |
-| `/ask` | Switch to direct paper Q&A. |
-| `/coach` | Switch to test-first reading coach mode. |
-| `/switch` | Toggle between Q&A and coach mode. |
-| `/done` | Mark the current unit as read and ready for checkpoint answers. |
-| `/hold` | Stay on the current unit and do not advance. |
-| `/hint` | Get the smallest useful hint. |
-| `/summary` | Summarize the current unit. |
-| `/critique` | Inspect the paper like a skeptical reviewer. |
-| `/synthesis` | Build a higher-level synthesis from what has been read. |
-| `/map` | Show a compact paper map. |
-| `/cards` | Create review cards from tested material. |
-| `/save` | Create a concise checkpoint for resuming later. |
+| `/skim` | Skim for main line, evidence, and limitations. |
+| `/deep` | Deep-read the paper with mechanism and evidence checks. |
+| `/ask` | Ask a direct paper question. |
+| `/exam` | Test understanding with exam-style questions. |
+| `/summary` | Summarize the current unit or produce final synthesis. |
+| `/critique` | Inspect assumptions, evidence, baselines, and overclaims. |
+| `/save` | Create a concise resume checkpoint. |
 
-## 🚀 Use It
+## Install
 
-### 🛠️ As A Skill
-
-Install the `paper-reading-coach/` folder into any AI agent environment that
+Copy the `paper-reading-coach/` folder into any AI agent environment that
 supports skill-style instruction folders.
 
 For Codex, copy the folder into your Codex skills directory. If your skill
@@ -103,22 +77,15 @@ installer supports GitHub repository subpaths, install the `paper-reading-coach/
 folder from this repository. Restart the agent after installation so the new
 skill metadata is loaded.
 
-### 📝 As A Prompt
+## Prompt Example
 
-If your AI tool does not support skills, open
-`paper-reading-coach/SKILL.md` and paste its contents into the conversation as
-the reading protocol. Then ask the assistant to follow it while reading a paper.
+```text
+Use $paper-reading-coach. I am reading this paper. Start with a lightweight
+reading map, then follow my questions naturally. I may skim some parts and
+deep-read others. At the end, test me and produce a synthesis of both the paper
+and my learning path.
+```
 
-This works well for web AI chats, custom GPT-like assistants, and coding agents
-that accept project instructions.
-
-## 🌱 Project Status
-
-This skill is early and intentionally small. The current focus is prompt logic:
-mode routing, active recall, grounded Q&A, and paper-reading workflow design.
-
-Feedback from real reading sessions is welcome.
-
-## 📄 License
+## License
 
 MIT
