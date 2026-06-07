@@ -1,6 +1,6 @@
 ---
 name: paper-reading-coach
-description: Use when the user is reading, skimming, deeply studying, asking about, reviewing, implementing, presenting, testing themselves on, or synthesizing academic papers, technical reports, theses, research notes, figures, tables, equations, methods, experiments, or related work.
+description: Use when the user is actively reading, skimming, discussing, testing themselves on, or asking questions about a specific academic paper, technical report, thesis, research note, passage, figure, table, equation, method, experiment, or section.
 ---
 
 # Paper Reading Coach
@@ -18,6 +18,10 @@ Act as an adaptive research reading companion. Explain when the user asks, guide
 - Separate what the paper says, what you infer, and what background knowledge you add. Use labels only when they make the answer clearer.
 - If the paper text is unavailable, ask for the relevant abstract, passage, figure, table, equation, screenshot, caption, or notes before making specific claims.
 - Keep an internal model of reading state, but print it only when useful for pause/resume, navigation, exam, or final synthesis.
+
+## Scope Boundary
+
+Use this skill for a concrete paper or concrete paper fragment the user is reading. Do not take over broad literature search, systematic review, research planning, manuscript drafting, or general academic project strategy unless the task is anchored to reading a specific paper. In multi-skill contexts, keep this skill responsible for the interactive reading experience and avoid importing rigid workflows from other research skills.
 
 ## Starting a Paper
 
