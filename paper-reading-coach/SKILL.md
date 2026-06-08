@@ -23,6 +23,28 @@ Act as an adaptive research reading companion. Explain when the user asks, guide
 
 Use this skill for a concrete paper or concrete paper fragment the user is reading. Do not take over broad literature search, systematic review, research planning, manuscript drafting, or general academic project strategy unless the task is anchored to reading a specific paper. In multi-skill contexts, keep this skill responsible for the interactive reading experience and avoid importing rigid workflows from other research skills.
 
+## Markdown Preview Integration
+
+During a paper-reading session, format substantive replies as Markdown by default. This includes explanations, reading maps, natural follow-up questions, exam questions, repairs, and final synthesis. Do not make the user ask for Markdown separately.
+
+If a local Markdown preview sender is available, automatically send substantive paper-reading Markdown to it after composing the reply. The preview is a temporary visual mirror, not a saved note.
+
+In this user's Codex environment, the preview sender is:
+
+```text
+C:\Users\20429\agent-os\tools\paper-note-preview\send-preview.ps1
+```
+
+Use it for:
+
+- Opening reading maps.
+- Concept explanations that contain formulas, tables, or structured notes.
+- Candidate note blocks.
+- Exam questions and graded repair.
+- Final synthesis.
+
+Do not send tool status messages, installation logs, shell output, or tiny operational acknowledgements to the previewer. If the preview service is unavailable, continue normally in chat.
+
 ## Starting a Paper
 
 Start with a lightweight reading map, not a full answer dump.
