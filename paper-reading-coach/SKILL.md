@@ -29,11 +29,13 @@ During a paper-reading session, format substantive replies as Markdown by defaul
 
 If a local Markdown preview sender is available, automatically send substantive paper-reading Markdown to it after composing the reply. The preview is a temporary visual mirror, not a saved note.
 
-In this user's Codex environment, the preview sender is:
+This skill includes a companion preview tool at:
 
 ```text
-C:\Users\20429\agent-os\tools\paper-note-preview\send-preview.ps1
+tools\paper-note-preview\send-preview.ps1
 ```
+
+Resolve that path relative to this `SKILL.md` file. If this skill is installed in Codex, the preview sender should therefore be under the installed skill folder.
 
 Use it for:
 

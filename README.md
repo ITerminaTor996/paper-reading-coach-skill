@@ -29,6 +29,8 @@ This skill aims for the middle:
 - support final exam-style review;
 - produce a final synthesis that includes both paper content and the user's
   learning path.
+- preview Markdown and LaTeX locally before deciding what to copy into a
+  paper-note system such as alphaXiv.
 
 ## Reading Flow
 
@@ -52,6 +54,31 @@ At the end, the user can request:
   with, and what to revisit;
 - memory cards or notes for a literature review, presentation, or
   implementation plan.
+
+## Markdown Preview
+
+The skill includes a companion preview tool:
+
+```text
+paper-reading-coach/tools/paper-note-preview
+```
+
+It runs a local browser preview at `http://127.0.0.1:8765`, renders Markdown,
+tables, code blocks, and LaTeX math, and keeps only the latest preview content
+in memory. It is a visual mirror, not a note database.
+
+Start it manually:
+
+```powershell
+.\paper-reading-coach\tools\paper-note-preview\start-preview.ps1
+```
+
+Send Markdown into it:
+
+```powershell
+"### Note`n`n$$x_t = (1-t)x_0 + tx_1$$" |
+  .\paper-reading-coach\tools\paper-note-preview\send-preview.ps1
+```
 
 ## Optional Commands
 
