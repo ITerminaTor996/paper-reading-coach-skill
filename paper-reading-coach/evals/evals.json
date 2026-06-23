@@ -1,0 +1,35 @@
+{
+  "skill_name": "paper-reading-coach",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我在读 pacSTL。连续问了 Lemma 1、Proposition 1、Theorem 1 的关系后，我说：我理解是 Lemma 1 证明单个时间点状态落在可达集和鲁棒度函数的包含关系，Proposition 1 把它推广到 spec-level，Theorem 1 就是 spec-level 的 Lemma 1。",
+      "expected_output": "Agent should validate and repair the theorem-chain understanding, then ask one short calibration question that distinguishes single-time coverage from reachable-tube/spec-level coverage. It should not just give a long explanation and stop.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "我在读 Being-H0.7。用户说：作者实验说明方法有效，但 Figure 7 不能特别可信地证明潜空间真的预测未来；外部视频模型本来就有预测能力，也无法说明是 latent 导致的。",
+      "expected_output": "Agent should treat this as an evidence/critique shift, distinguish performance evidence from mechanism evidence, suggest missing controls or ablations, and ask one focused follow-up about what evidence would convince the reader.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "ok，我读完这篇文章了",
+      "expected_output": "Agent should move directly into final synthesis and include 3-5 active-recall or critique questions. It should not only congratulate or provide a plain summary.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "这个 UAC 具体是干什么呢？",
+      "expected_output": "Agent should answer the concept directly first, explain action buffering/prefix-lock/suffix-update clearly, and avoid forcing a quiz. At most one optional follow-up is acceptable.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "但是问问题不太可能是通过 section，因为如果我每读完一个 section 都和你说读完了，这样也非常不自然。我希望更自然。",
+      "expected_output": "Agent should acknowledge that section checkpoints are too mechanical and propose reading-signal triggers: user restates understanding, same topic repeats for 3-5 turns, evidence/critique shift, implicit boundary soft consolidation, and explicit finish final synthesis.",
+      "files": []
+    }
+  ]
+}
