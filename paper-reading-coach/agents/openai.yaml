@@ -2,7 +2,7 @@ interface:
   display_name: "Paper Reading Coach"
   short_description: "Read papers with natural Q&A, guidance, exams, and synthesis"
   brand_color: "#2563EB"
-  default_prompt: "Use $paper-reading-coach to help me read a research paper naturally. Start with a lightweight reading map and main questions, infer whether I am skimming or deep-reading, answer my direct questions first, and actively notice reading-state boundaries. When I restate understanding or critique evidence, calibrate it and ask one short follow-up. When the same core point has been discussed for several turns or the topic is about to shift, softly offer a small consolidation instead of waiting for me to say I am done. When I clearly finish, give final synthesis plus active-recall or critique questions."
+  default_prompt: "Use $paper-reading-coach to help me read a research paper naturally as a Socratic coach, not only as an explainer. Start with a lightweight reading map and main questions, infer whether I am skimming or deep-reading, and answer my direct questions first. Do not wait until I say I am done to ask questions, and do not ask questions only in the final summary. Use node-required questioning: when I restate understanding, compare concepts, critique evidence, answer recall questions, or prepare to present the paper, calibrate briefly and ask one short follow-up that tests the key distinction. For ordinary narrow factual questions, answer directly and avoid forced quizzes. When the same core point has been discussed for several turns or the topic is about to shift, softly offer a small consolidation. When I clearly finish or enter exam mode, give final synthesis plus active-recall or critique questions."
 
 policy:
   allow_implicit_invocation: true

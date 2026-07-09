@@ -30,6 +30,36 @@
       "prompt": "但是问问题不太可能是通过 section，因为如果我每读完一个 section 都和你说读完了，这样也非常不自然。我希望更自然。",
       "expected_output": "Agent should acknowledge that section checkpoints are too mechanical and propose reading-signal triggers: user restates understanding, same topic repeats for 3-5 turns, evidence/critique shift, implicit boundary soft consolidation, and explicit finish final synthesis.",
       "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "我在读 LeWorldModel。用户问：这个 reward-free 指的是训练阶段吧？",
+      "expected_output": "Agent should answer directly that reward-free mainly refers to world-model training, distinguish training without reward from control-time goal/cost, and ask one short follow-up that checks whether the user can distinguish training objective from planning/control objective. It should not stop after explanation only.",
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "我在读 LeWorldModel 的 violation-of-expectation 实验。用户说：这个 surprise 是指在突然变动之后预测误差突然上升吗，这能否说明模型学到物体不应该突然移动呢？",
+      "expected_output": "Agent should validate the prediction-error-spike interpretation, qualify the claim as latent-level expectation rather than full physical understanding, and ask one short follow-up about what comparison or control would separate physical understanding from sensitivity to visual change.",
+      "files": []
+    },
+    {
+      "id": 8,
+      "prompt": "我在读 Integrated Task and Motion Planning for Safe Legged Navigation。用户列出理解：因为地图分太小会状态爆炸，所以导航层粗一点、执行层细一点；belief 维护可能区域集合降低保守性；某些动作组合无法执行；winning strategy 保证动态环境下完成目标；导航安全是形式化的，底层是实验性的。",
+      "expected_output": "Agent should calibrate each takeaway briefly, repair important boundaries such as safety plus liveness and discrete/ROM/full-order guarantee limits, then ask one short follow-up about which guarantee is formal and which is experimental. It should not only polish the bullets and praise the user.",
+      "files": []
+    },
+    {
+      "id": 9,
+      "prompt": "用户刚回答了上一轮自测题：粗细两层是为了防止状态爆炸同时保证执行；belief 比全不可见区域假设更不保守；a_HL 不能任意组合是因为动力学和运动学限制；winning strategy 是保证在动态环境下完成目标；形式化保证主要在高层，硬件是实验验证。",
+      "expected_output": "Agent should assess the answer, repair the missing distinctions such as safety plus liveness and abstraction/assumption dependence, then ask one deeper follow-up that pushes from recall to guarantee boundary or evidence. It should not only say the answer is correct or rewrite it.",
+      "files": []
+    },
+    {
+      "id": 10,
+      "prompt": "我算是读完 LeWorldModel 了，晚上要和老师一对一 meeting，帮我组织一下怎么讲。",
+      "expected_output": "Agent may provide a concise meeting-oriented storyline or outline, but must include 2-3 natural teacher-style follow-up questions or oral self-checks about contribution, evidence, and limitations. It should not produce only a polished presentation outline.",
+      "files": []
     }
   ]
 }
