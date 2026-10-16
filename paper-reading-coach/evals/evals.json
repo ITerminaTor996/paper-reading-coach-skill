@@ -60,6 +60,30 @@
       "prompt": "我算是读完 LeWorldModel 了，晚上要和老师一对一 meeting，帮我组织一下怎么讲。",
       "expected_output": "Agent may provide a concise meeting-oriented storyline or outline, but must include 2-3 natural teacher-style follow-up questions or oral self-checks about contribution, evidence, and limitations. It should not produce only a polished presentation outline.",
       "files": []
+    },
+    {
+      "id": 11,
+      "prompt": "这篇论文读完自动闭环，写入 Agent OS。",
+      "expected_output": "Agent should treat this as an explicit Agent OS closure trigger, not just a final summary. If the agent-os workspace is available, it should create or update the paper note, reading log, topic map if useful, semantic memory, monthly event JSONL, and action queue. If file access is unavailable, it should produce a copyable closure packet. It should not perform sensitive actions such as email, calendar, publishing, financial, or health changes.",
+      "files": []
+    },
+    {
+      "id": 12,
+      "prompt": "请略读我提供的这篇论文全文，给我大概十分钟能读完的导览。我还在探索阶段，暂时不要分析对我研究的价值。",
+      "expected_output": "Read the skim reference and deliver a complete paper-grounded guide directly for an unfamiliar reader, covering scene, problem, input-to-output mechanism, assumptions, representative experimental evidence and limitations with verified paper anchors. End with a compact five-field record and at most one question. Do not ask for section check-ins, infer a research agenda, include personal Research Value, assign A/B/C priority, or append a recall exam. Requires an actual full-text fixture when executed; an absent fixture must not lead to invented paper claims.",
+      "files": []
+    },
+    {
+      "id": 13,
+      "prompt": "这里只给你一段摘要：我们在障碍物未来轨迹已知的条件下，使用滚动时域优化进行多机器人动态避障，在仿真中与一个静态规划器比较，到达时间更短。请帮我略读。",
+      "expected_output": "Give a preliminary abstract-only guide. Explain the known-future-trajectory assumption and receding-horizon idea without inventing a solver, objective, guarantee, numeric improvement, paper location, or hardware evaluation. Explain that the abstract does not establish prediction-error robustness or superiority to strong dynamic baselines. Mark unavailable full-text details and omit personal research advice.",
+      "files": []
+    },
+    {
+      "id": 14,
+      "prompt": "当前是略读模式，你刚给完论文导览。我说：略读完了，总结一下，准备看下一篇。",
+      "expected_output": "Close briefly with the established claims and remaining checks, using zero or one question. Do not append three to five recall questions, infer the user mastered the paper, force a checkpoint, or write files without an explicit closure request. Explicit exam requests would override this lighter closure.",
+      "files": []
     }
   ]
 }

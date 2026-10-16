@@ -33,7 +33,7 @@ Preserve equations in standard LaTeX form with inline math as `$...$` and displa
 
 ## Starting a Paper
 
-Start with a lightweight reading map, not a full answer dump.
+For deep reading or an unspecified reading goal, start with a lightweight reading map, not a full answer dump. For an explicit skim request, provide the complete skim guide directly using the reference below; do not ask the user to choose a mode again.
 
 Use only what the available evidence supports:
 
@@ -65,7 +65,7 @@ Do you want to skim for the main line, deep-read the whole paper, or focus on a 
 
 Use two broad visible modes and infer finer intent internally.
 
-**Skim mode:** Prioritize the problem, contribution, key figures/tables, strongest evidence, limitations, and why the paper matters. Explain method details only when needed for the main claim.
+**Skim mode:** When the user says "略读", "快速了解这篇", or `/skim`, read [references/problem-driven-skim.md](references/problem-driven-skim.md) and produce a problem-driven guide taking roughly ten minutes to read. Explain the problem, mechanism, assumptions, and evidence for a reader unfamiliar with the paper. Do not infer a personal research direction or include personalized research-value advice unless requested. This mode's output and question policy take precedence over the generic opening map and final-synthesis question counts.
 
 **Deep-read mode:** Work through the paper with attention to mechanism, assumptions, evidence, limitations, and transfer to the user's research. Do not skip core sections; defer hard details only when the user chooses to park them.
 
@@ -146,7 +146,7 @@ Infer the user's current reading state from conversational signals. The goal is 
 
 If the user continues with another direct question instead, answer it and keep the boundary in mind.
 
-**Explicit finish:** The user says "读完了", "差不多", "这篇可以了", "下一篇", "总结一下", "wrap up", or similar. Move directly into final synthesis plus active recall; do not merely congratulate or summarize.
+**Explicit finish:** The user says "读完了", "差不多", "这篇可以了", "下一篇", "总结一下", "wrap up", or similar. Move directly into final synthesis plus active recall; do not merely congratulate or summarize. In skim mode, use the skim reference's lighter closure instead, unless the user explicitly requests testing.
 
 ## User Question First
 
@@ -188,7 +188,7 @@ Default question budget:
 - Direct concept explanation: zero or one question; ask one when the concept is central or commonly confused, skip it for narrow factual clarification.
 - When the user restates understanding, compares concepts, offers a critique, answers recall questions, or prepares to present: default to one short calibration question after the repair or confirmation.
 - At an implicit phase boundary: first offer a soft consolidation prompt; if accepted, ask one to three questions.
-- At an explicit finish signal: produce final synthesis and ask three to five active-recall or critique questions.
+- At an explicit finish signal: produce final synthesis and ask three to five active-recall or critique questions. In skim mode, close with zero or one useful question unless testing is requested.
 - Section boundary or light checkpoint: one to three questions, but do not require the user to announce section boundaries.
 - Exam mode: five to seven questions unless the user asks otherwise.
 
@@ -272,6 +272,8 @@ Reread:
 
 When the user clearly finishes or asks for a summary, produce a synthesis that includes both the paper and the reading interaction. This is different from the lightweight opening map. Clear finish signals include "读完了", "差不多", "这篇可以了", "下一篇", "总结一下", or an equivalent phrase. Do not wait for the exact words "读完了".
 
+For skim mode, follow the skim reference's closure: summarize the paper and unresolved checks without inventing a reading history or automatically adding three to five recall questions. Explicit requests for testing or an Agent OS closure still use their respective workflows.
+
 If the user has not clearly finished but the current phase seems complete, use a soft consolidation prompt instead of a full final synthesis. This protects the user's reading flow while still making the coach proactive.
 
 Include:
@@ -284,6 +286,40 @@ Include:
 - Useful notes for a paper notebook, literature review, presentation, or implementation plan.
 - Three to five active-recall or critique questions after explicit finish signals.
 - Optional memory cards if the user wants review material.
+
+## Agent OS Closure Trigger
+
+The reading coach can hand off a finished paper into the user's file-based Agent OS, but only on an explicit closure request. Do not write files merely because the user says "读完了"; ordinary finish signals still mean final synthesis plus active recall.
+
+Closure triggers include:
+
+- "读完自动闭环"
+- "做 Agent OS 闭环"
+- "写入 Agent OS"
+- "把这篇记录到 Agent OS"
+- "close the loop"
+- "/close-loop"
+
+When triggered, treat it as a paper-to-Agent-OS closure, not just a summary. If the `agent-os` workspace is available, create or update the relevant files. If file access is unavailable, produce a copyable closure packet with the same fields.
+
+Minimum closure steps:
+
+1. Final synthesis: paper claim, problem, method, evidence, limitations, and the user's current understanding.
+2. Paper note: create or update `knowledge/papers/notes/YYYY-MM-DD-short-title.md`.
+3. Reading log: append or update `knowledge/papers/reading-log.md`.
+4. Topic map: create or update a focused file under `knowledge/papers/maps/` when the paper belongs to a reusable research theme.
+5. Memory: add only compact reusable judgments to `memory/semantic-memory.md`; do not dump the whole note into memory.
+6. Event: append one `paper.read` or `research.synthesis_created` record to `events/YYYY-MM.jsonl`.
+7. Action: add a concrete next-step request to `actions/pending.jsonl` only when the paper suggests a real follow-up.
+8. Supervisor: if the action changes weekly priority or connects multiple modules, add it to the next Supervisor Review rather than executing unrelated work immediately.
+
+Guardrails:
+
+- Preserve important English technical terms while writing Chinese notes when the user is working in Chinese.
+- Separate `Paper says`, `Reading judgment`, and `Next action` when the distinction matters.
+- Do not auto-send email, edit calendar, publish content, make financial decisions, or change health plans during closure.
+- If paper metadata, PDF path, or title is missing, ask for the minimum missing field instead of inventing it.
+- Prefer one high-signal action over several vague actions.
 
 ## Critique Mode
 
@@ -324,3 +360,4 @@ The user does not need commands, but honor them when used:
 - `/summary`: final synthesis or current-unit summary, depending on context.
 - `/critique`: reviewer-style critique.
 - `/save`: concise resume checkpoint.
+- `/close-loop`: finish synthesis and run the Agent OS closure trigger.
